@@ -25,7 +25,7 @@ public class ClienteDAOTest {
 		cliente.setNome("Danilo");
 		cliente.setTel(99999999L);
 		cliente.setEnd("teste");
-		cliente.setNumero(30);
+		cliente.setNumero(28);
 		cliente.setCidade("São Paulo");
 		cliente.setUF("SP");
 		
@@ -51,10 +51,10 @@ public class ClienteDAOTest {
 	
 	@Test
 	public void alterarCliente() {
-		cliente.setNome("Danilo");
+		cliente.setNome("Danilo Sampaio");
 		clienteDAO.alterar(cliente);
 		
-		Assert.assertEquals("Danilo", cliente.getNome());
+		Assert.assertEquals("Danilo Sampaio", cliente.getNome());
 	}
 
 }

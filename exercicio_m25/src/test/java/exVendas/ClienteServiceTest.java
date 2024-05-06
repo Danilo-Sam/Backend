@@ -30,7 +30,7 @@ public class ClienteServiceTest {
 		cliente.setNome("Danilo");
 		cliente.setTel(99999999L);
 		cliente.setEnd("teste");
-		cliente.setNumero(30);
+		cliente.setNumero(28);
 		cliente.setCidade("São Paulo");
 		cliente.setUF("SP");
 	}
@@ -54,8 +54,8 @@ public class ClienteServiceTest {
 	
 	@Test
 	public void alterarCliente() {
-		cliente.setNome("Danilo");
+		cliente.setNome("Danilo Sampaio");
 		clienteService.alterar(cliente);
-		Assert.assertEquals("Danilo", cliente.getNome());
+		Assert.assertEquals("Danilo Sampaio", cliente.getNome());
 	}
 }
