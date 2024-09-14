@@ -1,0 +1,65 @@
+package test.com.br.dsampaio;
+
+
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+import com.br.dsampaio.dao.AcessorioDao;
+import com.br.dsampaio.dao.CarroDao;
+import com.br.dsampaio.dao.IAcessorioDao;
+import com.br.dsampaio.dao.ICarroDao;
+import com.br.dsampaio.dao.IMarcaDao;
+import com.br.dsampaio.dao.MarcaDao;
+import com.br.dsampaio.domain.Acessorio;
+import com.br.dsampaio.domain.Carro;
+import com.br.dsampaio.domain.Marca;
+
+public class CarroTest {
+
+    private ICarroDao carroDao;
+    private IMarcaDao marcaDao;
+    private IAcessorioDao acessorioDao;
+
+    public CarroTest() {
+        carroDao = new CarroDao();
+        marcaDao = new MarcaDao();
+        acessorioDao = new AcessorioDao();
+    }
+
+    @Test
+    public void cadastrar() {
+        Carro carro = criarCarro("CARRO");
+        assertNotNull(carro);
+        assertNotNull(carro.getId());
+
+    }
+
+    private Carro criarCarro(String placa) {
+        Marca marca = criarMarca("M1");
+        Acessorio acessorio1 = criarAcessorio("A1");
+
+        Carro carro = new Carro();
+        carro.setPlaca(placa);
+        carro.setModelo("Corolla");
+        carro.setMarca(marca);
+        carro.add(acessorio1);
+        Carro carroCadastrado = carroDao.cadastrar(carro);
+        return carroCadastrado;
+    }
+
+    private Acessorio criarAcessorio(String codigo) {
+        Acessorio acessorio = new Acessorio();
+        acessorio.setCodigo(codigo);
+        acessorio.setNome("GPS");
+        return acessorio;
+    }
+
+    private Marca criarMarca(String codigo) {
+        Marca marca = new Marca();
+        marca.setCodigo(codigo);
+        marca.setNome("Toyota");
+        Marca marcaCadastrada = marcaDao.cadastrar(marca);
+        return marcaCadastrada;
+    }
+}
